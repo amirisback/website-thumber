@@ -14,10 +14,23 @@ import app.model.Image
 
 object Constant {
 
+    val IMAGE_01 = Image(
+        "Image 1",
+        "Description Image 1",
+        "https://amirisback.github.io/website-thumber/src/main/images/img_1.jpg"
+    )
+
+    val IMAGE_02 = Image(
+        "Image 2",
+        "Description Image 2",
+        "https://amirisback.github.io/website-thumber/src/main/images/img_2.jpg"
+    )
+
     fun createGallery(): List<Image> {
         val datas = mutableListOf<Image>()
 
-        datas.add(Image("Image 1", "Description 1", "https://picsum.photos/200/300"))
+        datas.add(IMAGE_01)
+        datas.add(IMAGE_02)
 
         return datas
     }

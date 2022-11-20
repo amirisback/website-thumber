@@ -326,27 +326,27 @@
         <div class="swiper-button-prev swiper-button-white"></div>
     </div>
     <div class="swiper-container gallery-thumbs">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_1.jpg)"></div>
-            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_2.jpg)"></div>
-            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_3.jpg)"></div>
-            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_4.jpg)"></div>
-            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_5.jpg)"></div>
-            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_6.jpg)"></div>
-            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_7.jpg)"></div>
-            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_8.jpg)"></div>
-            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_9.jpg)"></div>
-            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_10.jpg)"></div>
-            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_1.jpg)"></div>
-            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_2.jpg)"></div>
-            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_3.jpg)"></div>
-            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_4.jpg)"></div>
-            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_5.jpg)"></div>
-            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_6.jpg)"></div>
-            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_7.jpg)"></div>
-            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_8.jpg)"></div>
-            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_9.jpg)"></div>
-            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_10.jpg)"></div>
+        <div class="swiper-wrapper amir">
+<!--            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_1.jpg)"></div>-->
+<!--            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_2.jpg)"></div>-->
+<!--            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_3.jpg)"></div>-->
+<!--            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_4.jpg)"></div>-->
+<!--            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_5.jpg)"></div>-->
+<!--            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_6.jpg)"></div>-->
+<!--            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_7.jpg)"></div>-->
+<!--            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_8.jpg)"></div>-->
+<!--            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_9.jpg)"></div>-->
+<!--            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_10.jpg)"></div>-->
+<!--            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_1.jpg)"></div>-->
+<!--            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_2.jpg)"></div>-->
+<!--            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_3.jpg)"></div>-->
+<!--            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_4.jpg)"></div>-->
+<!--            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_5.jpg)"></div>-->
+<!--            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_6.jpg)"></div>-->
+<!--            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_7.jpg)"></div>-->
+<!--            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_8.jpg)"></div>-->
+<!--            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_9.jpg)"></div>-->
+<!--            <div class="swiper-slide cover" style="background-image:url(src/main/images/img_10.jpg)"></div>-->
         </div>
     </div>
 
@@ -368,6 +368,33 @@
 <script src="src/main/js/swiper.min.js"></script>
 <script src="src/main/js/jquery.scrollbar.js"></script>
 <script src="src/main/js/main.js"></script>
+
+
+<script>
+    async function fetchData() {
+        let response = await fetch('https://amirisback.github.io/website-thumber/api/v1/gallery.json');
+
+        if (response.status === 200) {
+            let responseBody = await response.json();
+            console.log(responseBody);
+
+            let html = '';
+
+            responseBody.forEach(data => {
+                console.log(data.url);
+                let htmlSegment = `<div class="swiper-slide cover" style="background-image:url(${data.url})"></div>`;
+                html += htmlSegment;
+            });
+
+            let container = document.querySelector('.swiper-wrapper.amir');
+            container.innerHTML = html;
+
+        }
+    }
+
+    fetchData();
+</script>
+
 
 </body>
 </html>
